@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+
+  production-nginx-container:
+    container_name: 'letsencrypt-nginx-container'
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Nginx/conf.d/:/etc/nginx/conf.d/
+      - ./Nginx/www/:/var/www
+      - ./Nginx/logs/:/var/log/nginx/
+      - /home/bood92/docker/docker_nginx_ssl/dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
+      - /home/bood92/docker/docker_nginx_ssl/volume/etc/letsencrypt/live/host-5-58-202-113.bitternet.ua/fullchain.pem:/etc/letsencrypt/live/host-5-58-202-113.bitternet.ua/fullchain.pem
+      - /home/bood92/docker/docker_nginx_ssl/volume/etc/letsencrypt/live/host-5-58-202-113.bitternet.ua/privkey.pem:/etc/letsencrypt/live/host-5-58-202-113.bitternet.ua/privkey.pem
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    driver: bridge

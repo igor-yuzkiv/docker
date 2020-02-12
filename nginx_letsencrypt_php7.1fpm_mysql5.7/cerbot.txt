@@ -1,0 +1,10 @@
+sudo docker run -it --rm \
+-v /home/bood92/docker/docker_nginx_ssl/volume/etc/letsencrypt:/etc/letsencrypt \
+-v /home/bood92/docker/docker_nginx_ssl/volume/var/lib/letsencrypt:/var/lib/letsencrypt \
+-v /home/bood92/docker/docker_nginx_ssl/letsencrypt/Nginx/www:/data/letsencrypt \
+-v "/home/bood92/docker/docker_nginx_ssl/volume/var/log/letsencrypt:/var/log/letsencrypt" \
+certbot/certbot \
+certonly --webroot \
+--email igor97w@gmail.com --agree-tos --no-eff-email \
+--webroot-path=/data/letsencrypt \
+-d host-5-58-202-113.bitternet.ua
