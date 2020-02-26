@@ -1,0 +1,34 @@
+version: '3.3'
+services:
+    nginx:
+        image: nginx:latest
+        container_name: nginx_laravel
+        ports:
+            - "80:80"
+        volumes:
+            - ./Nginx/core/:/etc/nginx/conf.d
+            - ./Nginx/www/:/var/www/
+            - ./Nginx/Logs/:/var/log/nginx/
+        links:
+            - php
+
+    mysql:
+        image: mysql:5.6.40
+        ports:
+            - "3306:3306"
+        container_name: mysql-5.6_laravel
+        environment:
+            - MYSQL_ROOT_PASSWORD=n8M8tcIx6za4
+            - MYSQL_DATABASE=laravel
+            - MYSQL_USER=laravel
+            - MYSQL_PASSWORD=eS149dzAvud1
+        volumes:
+            - ./MySQL:/var/lib/mysql
+
+    php:
+        build: ./PHP
+        container_name: php-fpm-7.4_laravel
+        volumes:
+            - ./Nginx/www:/var/www
+        links:
+            - mysql:db
