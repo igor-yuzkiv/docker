@@ -1,0 +1,7 @@
+git clone https://github.com/laravel/laravel/releases ./html
+docker exec php-fpm-7.4_laravel composer update
+
+
+# use php artisan
+
+docker exec hp-fpm-7.4_laravel php artisan make:migration name
