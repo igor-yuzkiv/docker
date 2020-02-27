@@ -1,0 +1,2 @@
+git clone https://github.com/laravel/laravel/releases ./html
+docker exec php-fpm-7.4_laravel composer update
