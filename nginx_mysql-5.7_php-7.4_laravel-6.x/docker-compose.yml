@@ -17,12 +17,12 @@ services:
         image: mysql:5.7
         ports:
             - "3306:3306"
-        container_name: mysql_laravel
+        container_name: mysql5.7_laravel
         environment:
-            - MYSQL_ROOT_PASSWORD=tGk#Hq
+            - MYSQL_ROOT_PASSWORD=root_password
             - MYSQL_DATABASE=laravel
             - MYSQL_USER=laravel
-            - MYSQL_PASSWORD=tGk#Hq
+            - MYSQL_PASSWORD=laravel_password
         volumes:
             - ./MySQL:/var/lib/mysql
 
